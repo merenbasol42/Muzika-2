@@ -1,0 +1,1 @@
+DEFAULT_WIND: float = 5.0 # seconds
