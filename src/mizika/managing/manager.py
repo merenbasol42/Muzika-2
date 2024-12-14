@@ -1,10 +1,11 @@
+
 '''
 MManager (Mizika Manager); "mizika" paketi için oynatma listesi işlemleri
 işlevlerini yerine getiren sınıftır.
 '''
 
 from typing import Optional, Union
-from ...tools.event import Event
+from ...tools.event_pkg import Event
 from ..core.core import Song
 from .playlist import Playlist
 from .pl_list import PLList
