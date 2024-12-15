@@ -5,7 +5,7 @@ işlevlerini yerine getiren sınıftır.
 '''
 
 from typing import Optional, Union
-from ...tools.event_pkg import Event
+from ...tools.comm.event_pkg import Event
 from ..core.core import Song
 from .playlist import Playlist
 from .pl_list import PLList

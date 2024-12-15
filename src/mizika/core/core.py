@@ -5,9 +5,11 @@ MCore sınıfı, "mizika" paketinin çekirdeğidir.
 MCore sınıfı müzik çalma işlevi için python-vlc kullanır.
 '''
 import vlc
-from .song import Song
-from .consts import DEFAULT_WIND
+import time
 from typing import Optional
+from ...tools.comm.event_pkg import Event
+from .song import Song
+from .consts import *
 
 class MCore:
     def __init__(self):
@@ -19,13 +21,19 @@ class MCore:
         self.position: float = 0.0  # how much spending time for playing music
         self.curr_song: Optional[Song] = None  # current playing song
         self.__run_flag: bool = False  # is running 
+        #
+        # Events
+        #
+        self.e_state = Event("state changed")
+        self.e_vol = Event("volume changed")
+        self.e_curr_song = Event("song changed")
 
     def load_song(self, song: Song):
         '''Şarkıyı oynatıcıya yükler'''
         media = self.instance.media_new(song.path)
         self.player.set_media(media)
         self.curr_song = song
-        self.player.audio_set_volume(int(self.volume))
+        self.e_curr_song.trigger()
 
     #
     # State
@@ -33,10 +41,8 @@ class MCore:
 
     def state_togg(self):
         '''çalma durumunu için bir toggle'''
-        if self.state:
-            self.pause()
-        else:
-            self.play()
+        if self.state: self.pause()
+        else: self.play()
 
     def play(self):
         '''
@@ -46,36 +52,41 @@ class MCore:
         if not self.state and self.curr_song:
             self.player.play()
             self.state = True
+            self.e_state.trigger()
 
     def pause(self):
         '''Müzik çalmayı duraklatır'''
         if self.state:
             self.player.pause()
             self.state = False
+            self.e_state.trigger()
 
     #
     # Position
     #
-    
+
+    def get_pos(self):
+        return self.player.get_time() / S_TO_MS
+
     def set_pos(self, new_pos: float):
         '''Şarkının pozisyonunu "new_pos" olarak ayarlar'''
         if self.curr_song:
-            total_length = self.player.get_media().get_duration()
-            self.player.set_time(int(total_length * new_pos))
+            self.player.set_time(new_pos * S_TO_MS)
 
     def rewind(self, val: float = DEFAULT_WIND):
         '''Şarkının pozisyonunu "val" kadar geriye sarar'''
-        current_time = self.player.get_time()
-        total_length = self.player.get_media().get_duration()
-        new_time = max(0, current_time - int(total_length * val))
-        self.player.set_time(new_time)
+        self.set_pos(
+            max(0.0, self.position - val)
+        )
 
     def towind(self, val: float = DEFAULT_WIND):
         '''Şarkının pozisyonunu "val" kadar ileriye sarar'''
-        current_time = self.player.get_time()
-        total_length = self.player.get_media().get_duration()
-        new_time = min(total_length, current_time + int(total_length * val))
-        self.player.set_time(new_time)
+        self.set_pos(
+            min(
+                self.curr_song.length,
+                self.position + val
+            )
+        )
 
     #
     # Volume
@@ -84,11 +95,14 @@ class MCore:
     def set_vol(self, percent: float):
         '''
         Ses düzeyini "percent" olarak ayarlar
-        Dikkat edilmesi gereken husus "percent" 0 ila 100 arası olmalıdır
+        Dikkat edilmesi gereken husus "percent" 0 ila 100 arasına getirilir
         '''
-        if 0 <= percent <= 100:
-            self.volume = percent
-            self.player.audio_set_volume(int(percent))
+        if percent < 0: percent = 0
+        elif percent > 100: percent = 100
+        
+        self.player.audio_set_volume(int(percent))
+        self.volume = percent
+        self.e_vol.trigger()
 
     def mute(self):
         '''Ses düzeyini 0.0'a eşitler'''
@@ -99,18 +113,14 @@ class MCore:
         Ses düzeyini "percent" kadar artırır
         Dikkat edilmesi gereken husus "percent" 0 ila 100 arası olmalıdır
         '''
-        if 0 <= percent <= 100:
-            new_volume = min(100, self.volume + percent)
-            self.set_vol(new_volume)
+        self.set_vol(self.volume + percent)
 
     def desc_vol(self, percent: float):
         '''
         Ses düzeyini "percent" kadar azaltır
         Dikkat edilmesi gereken husus "percent" 0 ila 100 arası olmalıdır
         '''
-        if 0 <= percent <= 100:
-            new_volume = max(0, self.volume - percent)
-            self.set_vol(new_volume)
+        self.set_vol(self.volume - percent)
 
     #
     # Threading
@@ -121,6 +131,8 @@ class MCore:
         Eğer müzik çalmak için ayrı bir threadin üstüne düşmesi
         isteniyorsa bu method çalıştırılmalı
         '''
-        # Bu metod, gelecekte thread bazlı müzik çalma için kullanılabilir
-        # Şimdilik boş bırakılmıştır
-        pass
+        while self.__run_flag:
+            if self.curr_song == None:
+                self.position = self.get_pos()
+            time.sleep(ZZZ_TIME)            
+        

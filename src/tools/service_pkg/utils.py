@@ -1,1 +1,0 @@
-class AlreadyHasAServer(Exception): pass

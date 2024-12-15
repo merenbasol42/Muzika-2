@@ -5,9 +5,11 @@ class Program:
         self.mizika: Mizika = Mizika(pls_dir_path)
     
     def run(self):
-        print("hi")
-        while True:
-            pass
+        # print("hi")
+        # while True:
+        #     pass
+        from ..tools.comm.test import test
+        test()
 
 
 class IManagerI:
