@@ -1,0 +1,9 @@
+{
+    "theme": "dark",
+    "language": "en",
+    "lang_dir": "/home/ustad/Projects/Python/Muzika-2/config/lang",
+    "assets_dir": "/home/ustad/Projects/Python/Muzika-2/assets",
+    "icons_dir": "/home/ustad/Projects/Python/Muzika-2/assets/icons",
+    "sounds_dir": "/home/ustad/Projects/Python/Muzika-2/assets/sounds",
+    "pls_dir": "/home/ustad/Projects/Python/Muzika-2/playlists"
+}

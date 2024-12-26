@@ -1,0 +1,1 @@
+from .ipage import IPage
