@@ -1,9 +1,8 @@
 import customtkinter as ctk
 
 from mguitb import IComponent
-from .statment_panel import StatementPanel
+from .statement_panel import StatementPanel
 from .navigator import Navigator
-
 
 class Header(IComponent):
     def __init__(self, master: ctk.CTk):
