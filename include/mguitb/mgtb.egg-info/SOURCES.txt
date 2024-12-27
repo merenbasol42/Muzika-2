@@ -1,0 +1,10 @@
+setup.py
+mgtb.egg-info/PKG-INFO
+mgtb.egg-info/SOURCES.txt
+mgtb.egg-info/dependency_links.txt
+mgtb.egg-info/requires.txt
+mgtb.egg-info/top_level.txt
+mguitb/__init__.py
+mguitb/component.py
+mguitb/icon_button.py
+mguitb/table_view.py

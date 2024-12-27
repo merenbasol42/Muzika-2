@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: mtools
+Version: 0.1.0
+Summary: Additional GUI tools and widget for Muzika. This package only avalible on Muzika
+Home-page: https://github.com/merenbasol42
+Author: Mustafa Eren BAŞOL
+Author-email: merenbasol@gmail.com
+License: UNKNOWN
+Project-URL: Source, https://github.com/merenbasol42
+Platform: UNKNOWN
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: test
+
+UNKNOWN
+

@@ -1,7 +1,7 @@
 import customtkinter as ctk
-from ..utils import IComponent, IconButton
-from ...utils.configurer import Configurer
-from ...utils.path_works import add as pw_add
+import mtools.path_works as pw
+from mguitb import IComponent, IconButton
+from mcfg import Configurer
 
 class StatementPanel(IComponent):
     def __init__(self, master: ctk.CTk):
@@ -13,13 +13,13 @@ class StatementPanel(IComponent):
         #
         # Icon paths
         #
-        __dir = pw_add(self.__cfg.icons_dir, "header")
-        self.MODE_DEF_ICON_PATH: str = pw_add(__dir, "mode_def.png")
-        self.MODE_ONE_ICON_PATH: str = pw_add(__dir, "mode_one.png")
-        self.MODE_LOOP_ICON_PATH: str = pw_add(__dir, "mode_loop.png")
-        self.MODE_MIX_ICON_PATH: str = pw_add(__dir, "mode_mix.png")
-        self.PLAY_ICON_PATH: str = pw_add(__dir, "play.png")
-        self.PAUSE_ICON_PATH: str = pw_add(__dir, "pause.png")
+        __dir = pw.add(self.__cfg.icons_dir, "header")
+        self.MODE_DEF_ICON_PATH: str = pw.add(__dir, "mode_def.png")
+        self.MODE_ONE_ICON_PATH: str = pw.add(__dir, "mode_one.png")
+        self.MODE_LOOP_ICON_PATH: str = pw.add(__dir, "mode_loop.png")
+        self.MODE_MIX_ICON_PATH: str = pw.add(__dir, "mode_mix.png")
+        self.PLAY_ICON_PATH: str = pw.add(__dir, "play.png")
+        self.PAUSE_ICON_PATH: str = pw.add(__dir, "pause.png")
 
     def create(self):
         self.mode_icon = IconButton(

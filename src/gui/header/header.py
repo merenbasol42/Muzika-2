@@ -1,7 +1,6 @@
 import customtkinter as ctk
 
-from ..utils.component import IComponent
-
+from mguitb import IComponent
 from .statment_panel import StatementPanel
 from .navigator import Navigator
 

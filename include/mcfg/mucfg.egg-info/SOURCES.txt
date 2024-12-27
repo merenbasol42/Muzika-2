@@ -1,0 +1,9 @@
+setup.py
+mcfg/__init__.py
+mcfg/cfg_interface.py
+mcfg/configurer.py
+mucfg.egg-info/PKG-INFO
+mucfg.egg-info/SOURCES.txt
+mucfg.egg-info/dependency_links.txt
+mucfg.egg-info/requires.txt
+mucfg.egg-info/top_level.txt

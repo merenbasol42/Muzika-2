@@ -1,3 +1,3 @@
-from ..utils import IComponent
+from mguitb import IComponent
 
 class IPage(IComponent): pass

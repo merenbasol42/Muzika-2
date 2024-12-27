@@ -4,6 +4,7 @@ from .pages.edit_page import EditPage
 from .pages.play_page import PlayPage
 from .pages import IPage
 
+
 SIZE = (450, 600)
 
 class IUI:
@@ -40,12 +41,13 @@ class GUI(IUI):
         self.header.insert()
         self.header.pack(side="top", fill='x')
         
-        self.edit_page = EditPage(self.root)
-        self.header.create()
-        self.header.insert()
-        self.header.pack(side="top", fill='x')
+        # self.edit_page = EditPage(self.root)
+        # self.edit_page.create()
+        # self.edit_page.insert()
+        # self.edit_page.pack(side="top", fill='x')
         
         self.play_page = PlayPage(self.root)
         self.play_page.create()
         self.play_page.insert()
-        self.play_page.pack(side="top", fill='x')
+        self.play_page.configure(fg_color='red')
+        self.play_page.pack(side="top", fill='both', expand=True, padx=5, pady=5)
