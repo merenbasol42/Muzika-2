@@ -20,8 +20,14 @@ class PlayPage(IPage):
     
     def insert(self):
         self.player.insert()
-        self.player.pack(side="bottom", fill='x')
         self.volumer.insert()
-        self.volumer.pack(side="bottom", fill='x')
-        
+        # self.player.pack(side="bottom", fill='x')
+        # self.volumer.pack(side="bottom", fill='x')
+        # self.player.grid(row=0, column=0)
+        # self.volumer.grid(row=1, column=0)
+        # self.player.grid_columnconfigure(0, weight=1)
+        # self.volumer.grid_columnconfigure(0, weight=1)
+        # self.player.grid_rowconfigure(0, weight=1)
+        # self.volumer.grid_rowconfigure(1, weight=1)
+
         return super().insert()
