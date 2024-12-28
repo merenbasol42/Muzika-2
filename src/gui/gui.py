@@ -4,7 +4,6 @@ from .pages.edit_page import EditPage
 from .pages.play_page import PlayPage
 from .pages import IPage
 
-
 SIZE = (450, 600)
 
 class IUI:

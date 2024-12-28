@@ -47,6 +47,7 @@ class Player(IComponent):
         self.play_button.grid(row=0, column=2)
         self.towind_button.grid(row=0, column=3)
         self.forward_button.grid(row=0, column=4)
+        
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=2)
         self.grid_columnconfigure(2, weight=2)
