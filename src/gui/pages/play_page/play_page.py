@@ -1,5 +1,3 @@
-import mtools.path_works as pw
-from mguitb import IconButton, HOVER_TYPE
 from mcfg import Configurer
 
 from ..ipage import IPage

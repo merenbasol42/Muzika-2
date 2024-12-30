@@ -1,8 +1,10 @@
 import customtkinter as ctk
 from .header import Header
+from .menu import Menu
 from .pages.edit_page import EditPage
 from .pages.play_page import PlayPage
 from .pages import IPage
+
 
 SIZE = (450, 600)
 
@@ -22,10 +24,20 @@ class GUI(IUI):
     def __init__(self):
         super().__init__()
         self.root: ctk.CTk
+        self.menu: Menu
         self.header: Header
         self.edit_page: EditPage
         self.play_page: PlayPage
         self.curr_page: IPage
+
+    def run(self):
+        self.__init_window()
+        self.__init_components()
+        self.root.mainloop()
+    
+    #
+    # Initialize
+    #
 
     def __init_window(self):
         self.root = ctk.CTk()
@@ -33,22 +45,25 @@ class GUI(IUI):
         self.root.geometry(f"{SIZE[0]}x{SIZE[1]}")
         self.root.resizable(True, True) # False, False
 
-    def run(self):
-        self.__init_window()
-        self.__init_components()
-        self.root.mainloop()
-
     def __init_components(self):
         self.__init_header()
+        self.__init_menu()
         self.__init_edit_page()
         self.__init_play_page()
-        
+    
+    def __init_menu(self):
+        self.menu = Menu()
+        self.menu.withdraw()
+
     def __init_header(self):
         self.header = Header(self.root)
         self.header.create()
         self.header.insert()
         self.header.navigator.ch_page_button.configure(
             command = self.ch_page
+        )
+        self.header.navigator.settings_button.configure(
+            command = self.display_menu
         )
         self.header.pack(side="top", fill='x')
 
@@ -64,6 +79,13 @@ class GUI(IUI):
         self.edit_page = EditPage(self.root)
         self.edit_page.create()
         self.edit_page.insert()
+
+    #
+    # Callbacks
+    #
+
+    def display_menu(self):
+        self.menu.iconify()
 
     def ch_page(self):
         if self.curr_page == self.play_page:
