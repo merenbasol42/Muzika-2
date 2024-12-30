@@ -7,4 +7,5 @@ mgtb.egg-info/top_level.txt
 mguitb/__init__.py
 mguitb/component.py
 mguitb/icon_button.py
-mguitb/table_view.py
+mguitb/space.py
+mguitb/table.py
