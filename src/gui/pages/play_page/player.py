@@ -42,16 +42,17 @@ class Player(IComponent):
         return super().create()
 
     def insert(self):
-        self.backward_button.grid(row=0, column=0)
-        self.rewind_button.grid(row=0, column=1)
-        self.play_button.grid(row=0, column=2)
-        self.towind_button.grid(row=0, column=3)
-        self.forward_button.grid(row=0, column=4)
+        self.backward_button.grid(row=0, column=0, sticky='ns')
+        self.rewind_button.grid(row=0, column=1, sticky='ns')
+        self.play_button.grid(row=0, column=2, sticky='ns')
+        self.towind_button.grid(row=0, column=3, sticky='ns')
+        self.forward_button.grid(row=0, column=4, sticky='ns')
         
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=2)
         self.grid_columnconfigure(2, weight=2)
         self.grid_columnconfigure(3, weight=2)
         self.grid_columnconfigure(4, weight=1)
+        self.grid_rowconfigure(0, weight=1)
 
         return super().insert()

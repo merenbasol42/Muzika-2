@@ -53,7 +53,6 @@ class GUI(IUI):
     
     def __init_menu(self):
         self.menu = Menu()
-        self.menu.withdraw()
 
     def __init_header(self):
         self.header = Header(self.root)

@@ -6,13 +6,5 @@ def main():
     program = Program(ws_path)
     program.run()
 
-
-class A:
-    def __new__(cls):
-        return super().__new__(cls)
-    
-    def __init__(self):
-        print("haho")
-
 if __name__ == "__main__":
     main()

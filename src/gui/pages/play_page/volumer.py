@@ -28,9 +28,11 @@ class Volumer(IComponent):
         self.name_lbl.grid(row=0, column=0)
         self.slider.grid(row=0, column=1)
         self.val_lbl.grid(row=0, column=2)
+
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=5)
         self.grid_columnconfigure(2, weight=1)
+        self.grid_rowconfigure(0, weight=1)
         return super().insert()
 
     def __cb_slider_set(self, new_pos: float):
