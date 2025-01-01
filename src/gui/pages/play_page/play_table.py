@@ -1,7 +1,7 @@
 import customtkinter as ctk
 from mguitb import IComponent, Table
 
-COLS = ["name", "singer", "length"]
+COLS = ["__id__", "name", "singer", "length"]
 
 class PlayTable(IComponent):
     def __init__(self, master):

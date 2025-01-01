@@ -3,7 +3,7 @@ from mcfg import Configurer
 from mguitb import IComponent, Table, IconButton
 from mtools import path_works as pw
 
-COLS = ["name", "singer", "length"]
+COLS = ["__id__", "path"]
 
 class EditTable(IComponent):
     def __init__(self, master):
