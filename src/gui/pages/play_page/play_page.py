@@ -1,24 +1,25 @@
 from mcfg import Configurer
-from mguitb import Table
 from ..ipage import IPage
 from .player import Player
 from .volumer import Volumer
+from .play_table import PlayTable
 
 class PlayPage(IPage):
     def __init__(self, master, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
         self.__cfg = Configurer().cfg
-        self.table: Table 
+        self.table = PlayTable(self)
         self.player = Player(self) 
         self.volumer = Volumer(self)
 
     def create(self):
-        self.table = Table(self, ["name", "singer", "duration"])
+        self.table.create()
         self.player.create()
         self.volumer.create()
         return super().create()
     
     def insert(self):
+        self.table.insert()
         self.volumer.insert()
         self.player.insert()
         

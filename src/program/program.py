@@ -8,6 +8,7 @@ class Program:
         self.ws_path = ws_path
         self.__cfg = Configurer(pw.add(ws_path, "config", "config.json"))
         self.gui = GUI()
+        
     #
     # Initialize
     #
