@@ -19,8 +19,9 @@ class EditPage(IPage):
         
         self.table.grid(row=0, column=0, sticky='nswe')
         self.buttons.grid(row=1, column=0, sticky='nswe')
+        
         self.grid_rowconfigure(0, weight=10)
         self.grid_rowconfigure(1, weight=1)
-        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1) 
         return super().insert()
         

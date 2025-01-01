@@ -9,13 +9,13 @@ class PlayPage(IPage):
         super().__init__(master, *args, **kwargs)
         self.__cfg = Configurer().cfg
         self.table = PlayTable(self)
-        self.player = Player(self) 
         self.volumer = Volumer(self)
+        self.player = Player(self) 
 
     def create(self):
         self.table.create()
-        self.player.create()
         self.volumer.create()
+        self.player.create()
         return super().create()
     
     def insert(self):
@@ -31,5 +31,4 @@ class PlayPage(IPage):
         self.grid_rowconfigure(1, weight=1)
         self.grid_rowconfigure(2, weight=1)
         self.grid_columnconfigure(0, weight=1)
-
         return super().insert()

@@ -1,6 +1,6 @@
 import customtkinter as ctk
 from mcfg import Configurer 
-from mguitb import IComponent, IconButton
+from mguitb import IComponent
 from mtools import path_works as pw
 
 class Buttons(IComponent):
