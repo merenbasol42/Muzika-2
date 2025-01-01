@@ -42,6 +42,7 @@ class EditTable(IComponent):
         self.cre_btn.grid(row=0, column=0, sticky='nswe')
         self.pl_cbox.grid(row=0, column=1, sticky='nswe')
         self.del_btn.grid(row=0, column=2, sticky='nswe')
+        
         self.frame.grid_columnconfigure(0, weight=2)
         self.frame.grid_columnconfigure(1, weight=5)
         self.frame.grid_columnconfigure(2, weight=2)
